@@ -11522,6 +11522,10 @@ CREATE TABLE slack_user_invites (
       "</body>"));
   };
 
+  function htmlEntities(text) {
+    return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
   function makeFileFetcher(hostname, port, path, headers, preloadData) {
 
     return function(req, res) {
@@ -11550,8 +11554,8 @@ CREATE TABLE slack_user_invites (
 
       let fbMetaTagsString = "<meta property=\"og:image\" content=\"https://s3.amazonaws.com/pol.is/polis_logo.png\" />\n";
       if (preloadData && preloadData.conversation) {
-        fbMetaTagsString += "    <meta property=\"og:title\" content=\"" + preloadData.conversation.topic + "\" />\n";
-        fbMetaTagsString += "    <meta property=\"og:description\" content=\"" + preloadData.conversation.description + "\" />\n";
+        fbMetaTagsString += "    <meta property=\"og:title\" content=\"" + htmlEntities(preloadData.conversation.topic) + "\" />\n";
+        fbMetaTagsString += "    <meta property=\"og:description\" content=\"" + htmlEntities(preloadData.conversation.description) + "\" />\n";
         // fbMetaTagsString += "    <meta property=\"og:site_name\" content=\"" + site_name + "\" />\n";
       }
       x = x.pipe(replaceStream("<!-- REPLACE_THIS_WITH_FB_META_TAGS -->", fbMetaTagsString));
