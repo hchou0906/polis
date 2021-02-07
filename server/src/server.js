@@ -1162,7 +1162,8 @@ function initializePolisHelpers() {
 
     // using hex since it doesn't require escaping like base64.
     let dest = hexToStr(req.p.dest);
-    res.redirect(dest);
+    const u = new URL(dest);
+    res.redirect(u.pathname + u.search + u.hash);
   }
   // function handle_GET_setFirstCookie(req, res) {
   //     let setOnPolisDomain = !domainOverride;
