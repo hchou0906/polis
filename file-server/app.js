@@ -16,14 +16,18 @@ const serve = serveStatic(config.fileRoot, {
 function setHeaders (res, filePath) {
   //res.setHeader('Content-Disposition', contentDisposition(path));
   //
-  const configFile = fs.readFileSync(filePath + ".headersJson");
-  const headers = JSON.parse(configFile);
-  const headerNames = Object.keys(headers);
-  if (headerNames && headerNames.length) {
-    res.setHeader('Pragma', null);
-    headerNames.forEach((name) => {
-      res.setHeader(name, headers[name]);
-    });
+  try {
+    const configFile = fs.readFileSync(filePath + ".headersJson");
+    const headers = JSON.parse(configFile);
+    const headerNames = Object.keys(headers);
+    if (headerNames && headerNames.length) {
+      res.setHeader('Pragma', null);
+      headerNames.forEach((name) => {
+        res.setHeader(name, headers[name]);
+      });
+    }
+  } catch(e) { 
+    console.error(e);
   }
 }
 
