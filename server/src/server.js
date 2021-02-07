@@ -10378,9 +10378,9 @@ CREATE TABLE slack_user_invites (
       '</label>' +
       '<input type="password" id="password2" name="password2" style="width: 100%;" id="gatekeeperLoginPassword2" class="FormControl">' +
       '</div>' +
-      '<input type="hidden" name="lti_user_id" value="' + user_id + '">' +
+      '<input type="hidden" name="lti_user_id" value="' + htmlEntities(user_id) + '">' +
       '<input type="hidden" name="lti_user_image" value="' + user_image + '">' +
-      '<input type="hidden" name="lti_context_id" value="' + context_id + '">' +
+      '<input type="hidden" name="lti_context_id" value="' + htmlEntities(context_id) + '">' +
       '<input type="hidden" name="tool_consumer_instance_guid" value="' + tool_consumer_instance_guid + '">' +
       '<input type="hidden" name="afterJoinRedirectUrl" value="' + afterJoinRedirectUrl + '">' +
       '</div>' +
@@ -10404,9 +10404,9 @@ CREATE TABLE slack_user_invites (
       'Password' +
       '</label>' +
       '<input type="password" id="password" name="password" id="gatekeeperLoginPassword" style="width: 100%;" class="FormControl">' +
-      '<input type="hidden" name="lti_user_id" value="' + user_id + '">' +
+      '<input type="hidden" name="lti_user_id" value="' + htmlEntities(user_id) + '">' +
       '<input type="hidden" name="lti_user_image" value="' + user_image + '">' +
-      '<input type="hidden" name="lti_context_id" value="' + context_id + '">' +
+      '<input type="hidden" name="lti_context_id" value="' + htmlEntities(context_id) + '">' +
       '<input type="hidden" name="tool_consumer_instance_guid" value="' + tool_consumer_instance_guid + '">' +
       '<input type="hidden" name="afterJoinRedirectUrl" value="' + afterJoinRedirectUrl + '">' +
       '<a href="/pwresetinit" class="FormLink">Forgot your password?</a>' +
