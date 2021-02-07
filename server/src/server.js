@@ -3522,7 +3522,7 @@ Email verified! You can close this tab or hit the back button.
   function createNotificationsUnsubscribeUrl(conversation_id, email) {
     let params = {
       conversation_id: conversation_id,
-      email: email,
+      email: htmlEntities(email),
     };
     let path = "api/v3/notifications/unsubscribe";
     params[HMAC_SIGNATURE_PARAM_NAME] = createHmacForQueryParams(path, params);
@@ -3537,7 +3537,7 @@ Email verified! You can close this tab or hit the back button.
   function createNotificationsSubscribeUrl(conversation_id, email) {
     let params = {
       conversation_id: conversation_id,
-      email: email,
+      email: htmlEntities(email),
     };
     let path = "api/v3/notifications/subscribe";
     params[HMAC_SIGNATURE_PARAM_NAME] = createHmacForQueryParams(path, params);
